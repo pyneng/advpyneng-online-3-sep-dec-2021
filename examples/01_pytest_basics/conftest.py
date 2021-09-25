@@ -2,7 +2,6 @@ import pytest
 from netmiko import Netmiko
 
 
-
 @pytest.fixture(scope="session")
 def cisco_ios_router_common_params():
     data = {
