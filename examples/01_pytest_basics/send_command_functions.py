@@ -11,11 +11,9 @@ def send_show_command(device, command):
     return result
 
 
-def send_show_to_devices(device_list, command, output_file):
-    with ThreadPoolExecutor(workers=5) as ex:
-        result = ex.map(
-            send_show_command, device_list, repeat(command)
-        )
+def send_show_to_devices(device_list, command, output_file, max_threads=5):
+    with ThreadPoolExecutor(workers=max_threads) as ex:
+        result = ex.map(send_show_command, device_list, repeat(command))
         with open(output_file, "w") as f:
             for output in result:
                 f.write(output)
@@ -33,7 +31,6 @@ def parse_cdp_n(output):
     return re.findall(regex, output, re.MULTILINE)
 
 
-
 if __name__ == "__main__":
     r1 = {
         "device_type": "cisco_ios",
@@ -44,4 +41,3 @@ if __name__ == "__main__":
     }
     result = send_show_command(r1, "sh cdp neighbors")
     print(parse_cdp_n(result))
-
