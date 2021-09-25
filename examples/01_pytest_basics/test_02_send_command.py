@@ -1,5 +1,5 @@
 import pytest
-from send_command_functions import send_show_command
+from ex02_send_command_functions import send_show_command
 import netmiko
 
 

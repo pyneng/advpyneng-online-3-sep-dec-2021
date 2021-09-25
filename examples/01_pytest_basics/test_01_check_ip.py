@@ -1,6 +1,6 @@
 import pytest
 
-from check_ip_function import check_ip
+from ex01_check_ip_function import check_ip
 
 
 def test_check_ip():
