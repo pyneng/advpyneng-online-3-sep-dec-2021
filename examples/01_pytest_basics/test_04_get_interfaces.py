@@ -45,3 +45,10 @@ def test_only_phy_and_loopback():
     correct_intf_list = ["FastEthernet0/0", "FastEthernet0/1", "FastEthernet0/2", "Loopback100"]
     intf_list = get_interfaces_from_cfg(input_cfg)
     assert intf_list == correct_intf_list
+
+
+def test_empty_cfg():
+    input_cfg = ""
+    correct_intf_list = []
+    intf_list = get_interfaces_from_cfg(input_cfg)
+    assert intf_list == correct_intf_list
