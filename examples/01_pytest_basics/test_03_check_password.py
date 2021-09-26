@@ -12,5 +12,3 @@ import pytest
 )
 def test_min_len_param(user, passwd, min_len, result):
     assert check_passwd(user, passwd, min_length=min_len) == result
-
-
