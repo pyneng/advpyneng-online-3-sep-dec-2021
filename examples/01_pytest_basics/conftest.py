@@ -28,8 +28,8 @@ def cisco_ios_router_reachable():
 @pytest.fixture(scope="session")
 def ssh_connection_cisco_ios(cisco_ios_router_reachable):
     print("\n### SETUP\n")
-    ssh = Netmiko(**cisco_ios_router_reachable)
-    ssh.enable()
-    yield ssh
-    ssh.disconnect()
+    with Netmiko(**cisco_ios_router_reachable) as ssh:
+        ssh.enable()
+        yield ssh
+        ssh.disconnect()
     print("\n### TEARDOWN\n")

@@ -3,17 +3,13 @@ from ex02_send_command_functions import send_show_command
 import netmiko
 
 
-
-def test_send_show(
-    cisco_ios_router_reachable, ssh_connection_cisco_ios
-):
-    show_command = "sh ip int br"
-    correct_output = ssh_connection_cisco_ios.send_command(
-        show_command
-    )
-    output = send_show_command(
-        cisco_ios_router_reachable, show_command
-    )
+@pytest.mark.parametrize(
+    "show_command",
+    ["sh ip int br", "sh run"],
+)
+def test_send_show(cisco_ios_router_reachable, ssh_connection_cisco_ios, show_command):
+    correct_output = ssh_connection_cisco_ios.send_command(show_command)
+    output = send_show_command(cisco_ios_router_reachable, show_command)
     assert output == correct_output
 
 
