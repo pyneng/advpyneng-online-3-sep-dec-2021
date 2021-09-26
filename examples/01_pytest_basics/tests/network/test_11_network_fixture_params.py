@@ -1,40 +1,34 @@
-import subprocess
-import pytest
-from netmiko import ConnectHandler
-import re
+from pprint import pprint
 import yaml
-
-
-with open("devices.yaml") as f:
-    devices_params = yaml.safe_load(f)
-ip_list = [d["host"] for d in devices_params]
-
-
-@pytest.fixture(params=devices_params, scope="session", ids=ip_list)
-def ssh_connection(request):
-    # print(f"\n\n>>>>> Подключение {request.param['host']}")
-    with ConnectHandler(**request.param) as ssh:
-        ssh.enable()
-        yield ssh
-    # print(f"\n\n>>>>> Закрываю сессию {request.param['host']}")
-
-
-def test_ospf_enabled(ssh_connection):
-    output = ssh_connection.send_command("sh ip ospf")
-    assert "routing process" in output.lower()
-
-
-def test_loopback(ssh_connection):
-    output = ssh_connection.send_command("sh ip int br | i up +up")
-    # assert "Loopback0" in output
-    assert "Loopback0" in parse_sh_ip_int_br(output)
+import pytest
 
 
 @pytest.mark.parametrize(
-    "ip",
-    ["192.168.100.100", "192.168.100.2", "192.168.100.3"],
-    ids=["ISP1", "ISP2", "FW"],
+    "command,check_output",  # ["command", "check_output"],
+    [
+        ("sh ip ospf", "routing process"),
+        ("sh ip int br", "up"),
+    ],
 )
-def test_ping(ssh_connection, ip):
-    output = ssh_connection.send_command(f"ping {ip}")
-    assert "success rate is 100 percent" in output.lower()
+def test_ospf(ssh_connection, command, check_output):
+    output = ssh_connection.send_command(command)
+    assert check_output in output.lower()
+
+
+@pytest.mark.parametrize(
+    "ip_address", ["192.168.100.1", "192.168.100.100"], ids=["ISP1", "ISP2"]
+)
+def test_ping(ssh_connection, ip_address):
+    output = ssh_connection.send_command(f"ping {ip_address}")
+    assert "success rate is 100" in output.lower()
+
+
+def test_loopback(ssh_connection):
+    loopback = "Loopback0"
+    output = ssh_connection.send_command("sh ip int br")
+    assert loopback in output
+
+
+def test_intf(ssh_connection):
+    output = ssh_connection.send_command("sh ip int br | i up +up")
+    assert output.count("up") >= 4
