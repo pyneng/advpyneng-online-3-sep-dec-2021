@@ -31,5 +31,4 @@ def ssh_connection_cisco_ios(cisco_ios_router_reachable):
     with Netmiko(**cisco_ios_router_reachable) as ssh:
         ssh.enable()
         yield ssh
-        ssh.disconnect()
     print("\n### TEARDOWN\n")
