@@ -1,5 +1,5 @@
 import pytest
-from class_topology import Topology
+from ex05_class_topology import Topology
 
 
 def test_topology_normalization(topology_with_dupl_links, normalized_topology_example):
