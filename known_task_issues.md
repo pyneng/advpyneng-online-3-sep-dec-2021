@@ -2,6 +2,13 @@
 
 ### Перехватываются не все исключения в функции задания 1.3
 
+можно исправить except в функции send_show
+```python
+    except (ScrapliException, SSHException, socket.timeout) as error:
+        print(f"Device {host}, Transport {transport}, Error {error}")
+```
+
+на такой
 ```python
     except (ScrapliException, SSHException, socket.timeout, OSError) as error:
         print(f"Device {host}, Transport {transport}, Error {error}")
