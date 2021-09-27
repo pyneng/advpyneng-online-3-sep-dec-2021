@@ -2,25 +2,31 @@ import pytest
 from class_topology import Topology
 
 
+
 def test_topology_normalization(topology_with_dupl_links, normalized_topology_example):
     """Проверка удаления дублей в топологии"""
     top_with_data = Topology(topology_with_dupl_links)
     assert len(top_with_data.topology) == len(normalized_topology_example)
 
 
-def test_method_delete_link(normalized_topology_example, capsys):
+def test_method_delete_link_exists(normalized_topology_example, capsys):
     """Проверка работы метода delete_link"""
     norm_top = Topology(normalized_topology_example)
     delete_link_result = norm_top.delete_link(("R3", "Eth0/0"), ("SW1", "Eth0/3"))
     assert delete_link_result == None, "Метод delete_link не должен ничего возвращать"
-
     assert ("R3", "Eth0/0") not in norm_top.topology, "Соединение не было удалено"
 
-    # проверка удаления зеркального линка
+
+def test_method_delete_link_mirror(normalized_topology_example, capsys):
+    """Проверка работы метода delete_link - проверка удаления зеркального линка"""
+    norm_top = Topology(normalized_topology_example)
     norm_top.delete_link(("R5", "Eth0/0"), ("R3", "Eth0/2"))
     assert ("R3", "Eth0/2") not in norm_top.topology, "Соединение не было удалено"
 
-    # проверка удаления несуществующего линка
+
+def test_method_delete_link_not_exists(normalized_topology_example, capsys):
+    """Проверка работы метода delete_link - проверка удаления несуществующего линка"""
+    norm_top = Topology(normalized_topology_example)
     norm_top.delete_link(("R8", "Eth0/2"), ("R9", "Eth0/1"))
     out, err = capsys.readouterr()
     link_msg = "Такого соединения нет"

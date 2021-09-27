@@ -1,5 +1,12 @@
 ## Проблемы/нюансы с заданиями
 
+### Перехватываются не все исключения в функции задания 1.3
+
+```python
+    except (ScrapliException, SSHException, socket.timeout, OSError) as error:
+        print(f"Device {host}, Transport {transport}, Error {error}")
+```
+
 ### Задание 1.6
 
 В описании задания остался кусок от другого задания про команду sh ip route.
