@@ -39,3 +39,62 @@
 > 
 > Для заданий этого раздела нет тестов для проверки тестов :)
 
+
+
+## Задание 2.2. Использование TypedDict
+
+Если вы хотите использовать TypedDict в задании, надо добавить в тесты строки (в импорте добавлен ``_TypedDictMeta``
+и в конце двух тестов добавлены строки):
+
+```python
+# новая строка
+from typing import List, Dict, Any, Union, _TypedDictMeta
+
+
+def test_send_show_params():
+    """
+    Проверка аннотации параметров
+    """
+    annotations = task_2_2.send_show.__annotations__
+    assert annotations != {}, "Не написана аннотация для функции send_show"
+    assert annotations.get("command") == str
+    device_dict_annotations = annotations.get("device_dict")
+    assert (
+        device_dict_annotations == dict_with_str
+        or device_dict_annotations == dict_with_str_any
+        or device_dict_annotations == dict_with_str_bool_int
+        or device_dict_annotations == dict[str, str]
+        or device_dict_annotations == dict[str, Any]
+        or device_dict_annotations == dict[str, Union[str, bool, int]]
+        or device_dict_annotations == dict[Any, Any]
+        # новая строка
+        or type(device_dict_annotations) == _TypedDictMeta
+    )
+
+
+def test_send_command_to_devices_params():
+    """
+    Проверка аннотации параметров
+    """
+    annotations = task_2_2.send_show.__annotations__
+    device_dict_annotations = annotations.get("device_dict")
+    annotations = task_2_2.send_command_to_devices.__annotations__
+    assert (
+        annotations != {}
+    ), "Не написана аннотация для функции send_command_to_devices"
+    assert annotations.get("command") == str
+    assert annotations.get("max_workers") == int
+    devices_annotations = annotations.get("devices")
+    assert (
+        devices_annotations == List[dict_with_str]
+        or devices_annotations == List[dict_with_str_any]
+        or devices_annotations == List[dict_with_str_bool_int]
+        or devices_annotations == list[dict[str, str]]
+        or devices_annotations == list[dict[str, Any]]
+        or devices_annotations == list[dict[str, Union[str, bool, int]]]
+        or devices_annotations == list[dict[Any, Any]]
+        # новые строки
+        or devices_annotations == List[device_dict_annotations]
+        or devices_annotations == list[device_dict_annotations]
+    )
+```
