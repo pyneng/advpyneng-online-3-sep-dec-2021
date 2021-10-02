@@ -1,13 +1,20 @@
+from typing import Optional, Iterable
 
 
 def check_passwd(
-    username, password, min_length=8, check_username=True, forbidden_symbols=None
-):
+    username: str,
+    password: str,
+    min_length: int = 8,
+    check_username: bool = True,
+    forbidden_symbols: Optional[Iterable[str]] = None,
+) -> bool:
     if len(password) < min_length:
         print("Пароль слишком короткий")
         return False
     elif check_username and username in password:
         print("Пароль содержит имя пользователя")
+        return False
+    elif forbidden_symbols and set(forbidden_symbols) & set(password):
         return False
     else:
         print(f"Пароль для пользователя {username} прошел все проверки")
