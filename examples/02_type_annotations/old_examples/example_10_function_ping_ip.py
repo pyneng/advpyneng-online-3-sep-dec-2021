@@ -1,8 +1,10 @@
 import ipaddress
 import subprocess
+from typing import Union
 
 
-def ping_ip(ip_address):
+# def ping_ip(ip_address: ipaddress.IPv4Address) -> bool:
+def ping_ip(ip_address: Union[str, ipaddress.IPv4Address]) -> bool:
     reply = subprocess.run(
         ["ping", "-c", "3", "-n", str(ip_address)],
         stdout=subprocess.PIPE,

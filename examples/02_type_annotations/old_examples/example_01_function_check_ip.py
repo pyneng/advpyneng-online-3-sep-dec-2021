@@ -1,7 +1,7 @@
 import ipaddress
 
 
-def check_ip(ip):
+def check_ip(ip: str) -> bool:
     try:
         ipaddress.ip_address(ip)
         return True

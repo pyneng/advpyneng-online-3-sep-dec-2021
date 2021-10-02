@@ -5,8 +5,11 @@ from typing import Dict, Union, List
 
 
 def send_and_parse_show_command(
-    device_dict, command, index_file="index", templ_path="templates"
-):
+    device_dict: Dict[str, str],
+    command: str,
+    index_file: str = "index",
+    templ_path: str = "templates",
+) -> Union[str, List[Dict[str, str]]]:
     attributes = {"Command": command, "Vendor": device_dict["device_type"]}
     with ConnectHandler(**device_dict) as ssh:
         ssh.enable()
@@ -16,6 +19,8 @@ def send_and_parse_show_command(
         cli_table = clitable.CliTable(index_file, templ_path)
         cli_table.ParseCmd(command_output, attributes)
         return [dict(zip(cli_table.header, row)) for row in cli_table]
+        # проверка вложенных значений
+        # return [list(zip(cli_table.header, row)) for row in cli_table]
     except clitable.CliTableError:
         return command_output
 

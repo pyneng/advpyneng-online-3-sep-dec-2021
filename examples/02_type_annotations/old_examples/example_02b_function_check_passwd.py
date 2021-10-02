@@ -1,6 +1,13 @@
+from typing import Union, List, Optional
+
+
 def check_passwd(
-    username, password, min_length=8, check_username=True, forbidden_symbols=None
-):
+    username: str,
+    password: str,
+    min_length: int = 8,
+    check_username: bool = True,
+    forbidden_symbols: Union[List, None] = None,
+) -> bool:
     # forbidden_symbols: Optional[List] = None) -> bool:
     if len(password) < min_length:
         print("Пароль слишком короткий")

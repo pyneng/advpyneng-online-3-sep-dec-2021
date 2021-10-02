@@ -7,7 +7,10 @@ from netmiko import (
 from typing import Union, Dict, Optional
 
 
-def send_show_command(device_dict, command):
+def send_show_command(device_dict: Dict[str, str], command: str) -> Union[str, None]:
+    # def send_show_command(device_dict: Dict[str, str],
+    #                      command: str
+    #                     ) -> Optional[str]:
     try:
         with ConnectHandler(**device_dict) as ssh:
             ssh.enable()
