@@ -47,7 +47,7 @@
 и в конце двух тестов добавлены строки):
 
 ```python
-# новая строка
+# 1 новая строка (добавлен импорт _TypedDictMeta)
 from typing import List, Dict, Any, Union, _TypedDictMeta
 
 
@@ -67,7 +67,7 @@ def test_send_show_params():
         or device_dict_annotations == dict[str, Any]
         or device_dict_annotations == dict[str, Union[str, bool, int]]
         or device_dict_annotations == dict[Any, Any]
-        # новая строка
+        # 1 новая строка
         or type(device_dict_annotations) == _TypedDictMeta
     )
 
@@ -76,9 +76,11 @@ def test_send_command_to_devices_params():
     """
     Проверка аннотации параметров
     """
-    annotations = task_2_2.send_show.__annotations__
-    device_dict_annotations = annotations.get("device_dict")
+    # 2 новые строки
+    annotations_send_show = task_2_2.send_show.__annotations__
+    device_dict_annotations = annotations_send_show.get("device_dict")
     annotations = task_2_2.send_command_to_devices.__annotations__
+
     assert (
         annotations != {}
     ), "Не написана аннотация для функции send_command_to_devices"
@@ -93,7 +95,7 @@ def test_send_command_to_devices_params():
         or devices_annotations == list[dict[str, Any]]
         or devices_annotations == list[dict[str, Union[str, bool, int]]]
         or devices_annotations == list[dict[Any, Any]]
-        # новые строки
+        # 2 новые строки
         or devices_annotations == List[device_dict_annotations]
         or devices_annotations == list[device_dict_annotations]
     )
