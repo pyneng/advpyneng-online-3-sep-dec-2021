@@ -27,10 +27,8 @@ def send_show_command(device_dict: Dict[str, str],
 
 if __name__ == "__main__":
     device_params = {
-        "device_type": "cisco_ios",
-        "host": "192.168.100.1",
-        "username": "cisco",
-        "password": "cisco",
+        "device_type": "cisco_ios", "host": "192.168.100.1",
+        "username": "cisco", "password": "cisco",
         "secret": "cisco",
     }
     result = send_show_command(device_params, "sh ip int br")
