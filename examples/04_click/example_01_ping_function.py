@@ -1,7 +1,7 @@
 import subprocess
 import click
 
-def ping_ip(ip):
+def ping_ip(ip, count):
     """
     Ping IP address and return True/False
     """
@@ -21,7 +21,7 @@ def ping_ip(ip):
 @click.command()
 @click.argument("ip_address")
 @click.option("--count", "-c", default=2, type=int, help="Number of packets")
-def ping_ip(ip_address, count):
+def cli(ip_address, count):
     """
     Ping IP address and return True/False
     """
@@ -33,4 +33,4 @@ def ping_ip(ip_address, count):
 
 
 if __name__ == "__main__":
-    ping_ip()
+    cli()
