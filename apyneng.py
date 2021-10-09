@@ -68,6 +68,7 @@ class CustomTasksType(click.ParamType):
     Кроме того проверяет есть ли такой файл в текущем каталоге
     и оставляет только те, что есть.
     """
+
     name = "CustomTasksType"
 
     def convert(self, value, param, ctx):
@@ -121,9 +122,7 @@ class CustomTasksType(click.ParamType):
                         "Допустимые форматы: 1, 1a, 1b-d, 1*, 1-3"
                     )
                 )
-        tasks_with_tests = set(
-            [test.replace("test_", "") for test in test_files]
-        )
+        tasks_with_tests = set([test.replace("test_", "") for test in test_files])
         tasks_without_tests = set(task_files) - tasks_with_tests
         return sorted(test_files), sorted(tasks_without_tests)
 
@@ -213,7 +212,10 @@ def send_tasks_to_check(passed_tasks):
     После этого к этому коммиту добавляется сообщение о том,
     что задания сдаются на проверку с помощью функции post_comment_to_last_commit.
     """
-    ok_tasks = [test.replace("test_", "") for test in passed_tasks]
+    ok_tasks = [
+        re.sub(r".*(task_\d+_\d+.py)", r"\1", filename)
+        for filename in passed_tasks
+    ]
     tasks_num_only = sorted(
         [task.replace("task_", "").replace(".py", "") for task in ok_tasks]
     )
@@ -225,7 +227,14 @@ def send_tasks_to_check(passed_tasks):
     call_command("git push origin main")
 
     repo = get_repo()
-    post_comment_to_last_commit(message, repo)
+    last = post_comment_to_last_commit(message, repo)
+    commit_number = re.search(r'"(\w+)"', str(last)).group(1)
+    print(
+        green(
+            f"Задание успешно сдано на проверку. Комментарий о сдаче задания "
+            f"можно посмотреть по ссылке https://github.com/pyneng/{repo}/commit/{commit_number}"
+        )
+    )
 
 
 def test_run_for_github_token():
