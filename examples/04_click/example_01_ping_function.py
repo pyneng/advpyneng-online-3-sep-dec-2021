@@ -1,6 +1,22 @@
 import subprocess
 import click
 
+def ping_ip(ip):
+    """
+    Ping IP address and return True/False
+    """
+    reply = subprocess.run(
+        f"ping -c {count} -n {ip}",
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        encoding="utf-8",
+    )
+    if reply.returncode == 0:
+        return True
+    else:
+        return False
+
 
 @click.command()
 @click.argument("ip_address")
@@ -9,14 +25,8 @@ def ping_ip(ip_address, count):
     """
     Ping IP address and return True/False
     """
-    reply = subprocess.run(
-        f"ping -c {count} -n {ip_address}",
-        shell=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        encoding="utf-8",
-    )
-    if reply.returncode == 0:
+    reply = ping_ip(ip_address, count)
+    if reply:
         print(f"IP address {ip_address} is reachable")
     else:
         print(f"IP address {ip_address} is unreachable")
