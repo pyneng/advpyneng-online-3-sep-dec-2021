@@ -1,5 +1,6 @@
 # Проблемы/нюансы с заданиями
 
+
 ## Перехватываются не все исключения в функции задания 1.3
 
 можно исправить except в функции send_show
@@ -99,4 +100,25 @@ def test_send_command_to_devices_params():
         or devices_annotations == List[device_dict_annotations]
         or devices_annotations == list[device_dict_annotations]
     )
+```
+
+## Ошибка в тесте test_task_4_2b.py
+
+Надо заменить предпоследнюю строку теста.
+
+было так
+```python
+        correct_stdout in stdout.lower()
+```
+
+надо
+```python
+        correct_stdout in result.stdout.lower()
+```
+
+Для контекста (последние три строки теста в итоге должны выглядеть так):
+```python
+     assert (
+        correct_stdout in result.stdout.lower()
+     ), "На стандартный поток вывода не выведена информация о времени работы скрипта"
 ```
