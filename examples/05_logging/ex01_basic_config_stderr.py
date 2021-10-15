@@ -8,3 +8,5 @@ varb = "dhcp_snooping.db"
 logging.debug("Сообщение уровня debug %s", str(globals()))
 logging.info("Сообщение уровня info {}".format(globals()))
 logging.warning("Сообщение уровня warning")
+
+

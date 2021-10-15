@@ -5,7 +5,7 @@ import yaml
 CFG_PATH = "/home/vagrant/repos/bonus/pyneng-online-bonus/examples/06_logging/"
 
 # create logger
-logger = logging.getLogger("superscript")
+logger = logging.getLogger(__name__)
 
 # read config
 with open(CFG_PATH + "log_config.yml") as f:

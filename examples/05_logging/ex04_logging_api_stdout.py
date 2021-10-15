@@ -8,6 +8,7 @@ console = logging.StreamHandler(sys.stdout)
 console.setLevel(logging.DEBUG)
 formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s", datefmt="%H:%M:%S"
+    # "{asctime} - {name} - {levelname} - {message}", datefmt="%H:%M:%S", style="{"
 )
 console.setFormatter(formatter)
 
