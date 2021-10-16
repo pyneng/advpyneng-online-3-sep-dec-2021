@@ -15,7 +15,6 @@ import sys
 from logging_filters import MessageFilter
 
 
-
 log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
 
@@ -23,11 +22,14 @@ file_format = logging.Formatter(
     #"%(asctime)s %(name)s %(levelname)s %(message)s"
     "{asctime} - {name} - {levelname} - {message}", style="{"
 )
-stderr_format = logging.Formatter("%(name)s %(levelname)s %(message)s")
+stderr_format = logging.Formatter(
+    "{asctime} - {name} - {levelname} - {message}", style="{"
+    # "%(name)s %(levelname)s %(message)s"
+)
 
 # Вывод на stderr
 stderr = logging.StreamHandler()
-stderr.setLevel(logging.INFO)
+stderr.setLevel(logging.DEBUG)
 stderr.setFormatter(stderr_format)
 
 log.addHandler(stderr)
@@ -51,7 +53,7 @@ def send_show(device_dict, command):
             ssh.enable()
             result = ssh.send_command(command)
             log.debug(f"<===  Received:   {ip}")
-            log.debug(f"Получен вывод команды {command}\n\n{result}")
+            log.debug(f"Получен вывод команды {command} с {ip}")
         return result
     except SSHException as error:
         #log.exception(f"Ошибка {error} на {ip}")
