@@ -1,20 +1,19 @@
 import sys
 import logging
+from rich import inspect
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
 
-console = logging.StreamHandler(sys.stdout)
-console.setLevel(logging.DEBUG)
-formatter = logging.Formatter(
-    "%(asctime)s - %(name)s - %(levelname)s - %(message)s", datefmt="%H:%M:%S"
-    # "{asctime} - {name} - {levelname} - {message}", datefmt="%H:%M:%S", style="{"
-)
-console.setFormatter(formatter)
+fmt = logging.Formatter("{asctime} {name} {levelname} {message}", style="{")
+stderr = logging.StreamHandler()
+stderr.setLevel(logging.INFO)
+stderr.setFormatter(fmt)
 
-logger.addHandler(console)
+# logger
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+log.addHandler(stderr)
 
 ## messages
-logger.debug("Сообщение уровня debug %s", "SOS")
-logger.info("Сообщение уровня info")
-logger.warning("Сообщение уровня warning")
+log.debug("Сообщение уровня debug")
+log.info("Сообщение уровня info")
+log.warning("Сообщение уровня warning")

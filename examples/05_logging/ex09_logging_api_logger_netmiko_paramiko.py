@@ -1,4 +1,5 @@
 from concurrent.futures import ThreadPoolExecutor
+import sys
 from pprint import pprint
 from datetime import datetime
 import time
@@ -9,34 +10,38 @@ import click
 import yaml
 from netmiko import ConnectHandler
 from netmiko.ssh_exception import SSHException
-
-import logging
-import sys
-from logging_filters import MessageFilter
-
-
-log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
+from rich.logging import RichHandler
 
 fmt = logging.Formatter(
-    "{asctime} - {name} - {levelname} - {message}", style="{"
+    "{threadName} {funcName} {name} {levelname} {message}",
+    style="{"
 )
-
-# Вывод на stderr
 stderr = logging.StreamHandler()
 stderr.setLevel(logging.DEBUG)
 stderr.setFormatter(fmt)
 
+logfile = logging.FileHandler("logfile.log")
+logfile.setLevel(logging.DEBUG)
+logfile.setFormatter(fmt)
+
+# logger
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
 log.addHandler(stderr)
+log.addHandler(logfile)
 
-# Вывод log в файл
+# netmiko logger
+logf = logging.FileHandler("miko.log")
+logf.setLevel(logging.DEBUG)
+logf.setFormatter(fmt)
 
-lfile = logging.FileHandler("logfile.txt")
-lfile.setLevel(logging.DEBUG)
-lfile.setFormatter(fmt)
-lfile.addFilter(MessageFilter("Received"))
+netmiko = logging.getLogger("netmiko")
+netmiko.setLevel(logging.DEBUG)
+netmiko.addHandler(logf)
 
-log.addHandler(lfile)
+miko = logging.getLogger("paramiko")
+miko.setLevel(logging.DEBUG)
+miko.addHandler(logf)
 
 
 def send_show(device_dict, command):
@@ -66,6 +71,7 @@ def send_command_to_devices(devices, command):
 
 
 if __name__ == "__main__":
+    click.clear()
     with open("devices.yaml") as f:
         devices = yaml.safe_load(f)
     send_command_to_devices(devices, "sh ip int br")
