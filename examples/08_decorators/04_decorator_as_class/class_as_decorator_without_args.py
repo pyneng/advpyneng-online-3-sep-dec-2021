@@ -1,24 +1,21 @@
-from datetime import datetime
-import time
 
-
-class MegaDecorator:
+class verbose:
     def __init__(self, func):
+        print(f"Декорация функции {func.__name__}")
         self.func = func
 
     def __call__(self, *args, **kwargs):
-        start = datetime.now()
-        print("__call__")
+        print(f"У функции {self.func.__name__} такие аргументы")
+        print(f"{args=}")
+        print(f"{kwargs=}")
         result = self.func(*args, **kwargs)
-        time.sleep(1)
-        print(f"Время работы {datetime.now() - start}")
         return result
 
 
-
-#@MegaDecorator
+@verbose
 def upper(string):
     return string.upper()
 
-
-upper = MegaDecorator(upper)
+upper("a")
+# upper = verbose(upper)
+print(upper)
