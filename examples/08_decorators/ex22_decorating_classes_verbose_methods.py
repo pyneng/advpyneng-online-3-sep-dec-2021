@@ -1,17 +1,34 @@
 import paramiko
 import time
-
+from ex23_decorating_classes_add_new_method import add_pprint
 
 def verbose(func):
     def inner(*args, **kwargs):
         print(f"Вызываю функцию {func.__name__}")
-        print("Аргументы", args, kwargs)
+        print("Аргументы", args[1:], kwargs)
         return func(*args, **kwargs)
+
     return inner
 
 
+def verbose_methods(cls):
+    methods = {
+        name: method
+        for name, method in vars(cls).items()
+        if not name.startswith("__") and callable(method)
+    }
+    for name, method in methods.items():
+        # name "send_show_command"
+        # method = verbose(method)
+        setattr(cls, name, verbose(method))
+    return cls
+
+
+@add_pprint
+@verbose_methods
 class BaseSSH:
     device_type = "cisco_ios"
+
     def __init__(self, ip, username, password):
         self.ip = ip
         self.username = username
@@ -59,4 +76,3 @@ class BaseSSH:
 
     def __repr__(self):
         return f"BaseSSH(ip={self.ip})"
-
