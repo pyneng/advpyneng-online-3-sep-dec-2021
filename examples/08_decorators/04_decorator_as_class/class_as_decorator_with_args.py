@@ -1,3 +1,4 @@
+from functools import update_wrapper
 
 class verbose:
     def __init__(self, message):
@@ -11,6 +12,8 @@ class verbose:
             print(f"{args=}")
             print(f"{kwargs=}")
             result = func(*args, **kwargs)
+
+        update_wrapper(wrapper=inner, wrapped=func)
         return inner
 
 
@@ -20,3 +23,4 @@ def upper(string):
     return string.upper()
 
 upper("a")
+print(upper)
