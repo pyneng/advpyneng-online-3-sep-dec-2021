@@ -1,10 +1,11 @@
 # source https://docs.python.org/3/howto/descriptor.html#properties
 # To see how property() is implemented in terms of the descriptor protocol, here is a pure Python equivalent:
 
-class Property:
+class MyProperty:
     "Emulate PyProperty_Type() in Objects/descrobject.c"
 
     def __init__(self, fget=None, fset=None, fdel=None, doc=None):
+        print("__init__")
         self.fget = fget
         self.fset = fset
         self.fdel = fdel
@@ -17,6 +18,7 @@ class Property:
         self._name = name
 
     def __get__(self, obj, objtype=None):
+        print("__get__")
         if obj is None:
             return self
         if self.fget is None:
@@ -24,6 +26,7 @@ class Property:
         return self.fget(obj)
 
     def __set__(self, obj, value):
+        print("__set__")
         if self.fset is None:
             raise AttributeError(f"can't set attribute {self._name}")
         self.fset(obj, value)
@@ -32,18 +35,3 @@ class Property:
         if self.fdel is None:
             raise AttributeError(f"can't delete attribute {self._name}")
         self.fdel(obj)
-
-    def getter(self, fget):
-        prop = type(self)(fget, self.fset, self.fdel, self.__doc__)
-        prop._name = self._name
-        return prop
-
-    def setter(self, fset):
-        prop = type(self)(self.fget, fset, self.fdel, self.__doc__)
-        prop._name = self._name
-        return prop
-
-    def deleter(self, fdel):
-        prop = type(self)(self.fget, self.fset, fdel, self.__doc__)
-        prop._name = self._name
-        return prop
