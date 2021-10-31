@@ -141,3 +141,22 @@ def test_send_command_to_devices_params():
 > Скопировать функцию cli и настройку click из задания 3.2a или 3.2b.
 
 Речь о заданиях 4.2a или 4.2b.
+
+
+## Ошибка в тесте 10.2
+
+Надо заменить такие строки в конце теста test_class:
+```python
+    assert (
+        return_value == correct_return_value
+    ), "Функция возвращает неправильное значение"
+```
+
+на такие
+```python
+    reach, unreach = return_value
+    assert (
+        (sorted(reach), sorted(unreach)) == correct_return_value
+    ), "Функция возвращает неправильное значение"
+
+```
