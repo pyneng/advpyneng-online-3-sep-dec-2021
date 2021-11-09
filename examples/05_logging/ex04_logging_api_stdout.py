@@ -4,7 +4,7 @@ from rich import inspect
 
 
 fmt = logging.Formatter("{asctime} {name} {levelname} {message}", style="{")
-stderr = logging.StreamHandler()
+stderr = logging.StreamHandler(sys.stdout)
 stderr.setLevel(logging.INFO)
 stderr.setFormatter(fmt)
 
