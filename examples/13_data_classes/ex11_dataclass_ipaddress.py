@@ -12,10 +12,11 @@ class IPAddress:
         self._int_ip = int(ipaddress.ip_address(self.ip))
         try:
             self.mask = int(self.mask)
-            if self.mask not in range(0, 33):
-                raise ValueError("Маска должна быть в range(0, 33)")
         except ValueError:
             raise ValueError("Маска должна быть числом")
+        else:
+            if self.mask not in range(0, 33):
+                raise ValueError("Маска должна быть в range(0, 33)")
 
     def __add__(self, other):
         print("Вызывается __add__")
