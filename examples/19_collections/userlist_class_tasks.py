@@ -11,13 +11,6 @@ class Task:
 
 
 class ToDo(UserList):
-    # def __init__(self, tasks):
-    #     super().__init__(tasks)
-    #     self.tasks = self.data
-
-    def __repr__(self):
-        return f"ToDo({self.data})"
-
     def postpone(self):
         first_task = self.data.pop(0)
         self.data.append(first_task)
