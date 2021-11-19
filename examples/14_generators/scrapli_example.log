@@ -1,0 +1,101 @@
+2021-11-19 18:51:16,197 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:51:19,056 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:51:19,056 root DEBUG: {'sh version | i uptime': 'R1 uptime is 8 weeks, 1 day, 11 hours, 20 minutes'}
+2021-11-19 18:51:20,057 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:51:22,931 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:51:22,931 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  10.2.2.2        YES NVRAM  up                    up'}
+2021-11-19 18:51:23,933 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:53:30,927 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:53:33,877 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:53:33,877 root DEBUG: {'sh run | i hostname': 'hostname R1'}
+2021-11-19 18:53:34,878 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:53:37,703 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:53:37,703 root DEBUG: {'sh clock': '*18:53:37.591 UTC Fri Nov 19 2021'}
+2021-11-19 18:53:38,704 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:53:41,537 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:53:41,537 root DEBUG: {'sh version | i uptime': 'R3 uptime is 8 weeks, 1 day, 11 hours, 22 minutes'}
+2021-11-19 18:53:42,538 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:53:45,327 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:53:45,328 root DEBUG: {'sh clock': '*18:53:45.214 UTC Fri Nov 19 2021'}
+2021-11-19 18:53:46,328 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:53:49,152 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:53:49,152 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  10.2.2.2        YES NVRAM  up                    up'}
+2021-11-19 18:53:50,153 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:53:53,021 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:53:53,022 root DEBUG: {'sh clock': '*18:53:52.910 UTC Fri Nov 19 2021'}
+2021-11-19 18:53:54,022 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:53:56,855 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:53:56,855 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  1.1.1.1         YES manual up                    up'}
+2021-11-19 18:53:57,856 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:54:00,659 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:54:00,659 root DEBUG: {'sh clock': '*18:54:00.547 UTC Fri Nov 19 2021'}
+2021-11-19 18:54:01,661 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:54:04,464 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:54:04,465 root DEBUG: {'sh clock': '*18:54:04.353 UTC Fri Nov 19 2021'}
+2021-11-19 18:54:05,465 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:54:08,309 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:54:08,309 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  1.1.1.1         YES manual up                    up'}
+2021-11-19 18:54:09,310 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:54:12,162 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:54:12,162 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  10.2.2.2        YES NVRAM  up                    up'}
+2021-11-19 18:54:13,163 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:54:15,959 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:54:15,959 root DEBUG: {'sh clock': '*18:54:15.847 UTC Fri Nov 19 2021'}
+2021-11-19 18:54:16,960 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:54:19,898 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:54:19,898 root DEBUG: {'sh run | i hostname': 'hostname R1'}
+2021-11-19 18:54:20,899 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:54:23,735 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:54:23,736 root DEBUG: {'sh version | i uptime': 'R2 uptime is 8 weeks, 1 day, 11 hours, 23 minutes'}
+2021-11-19 18:54:24,737 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:54:27,591 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:54:27,591 root DEBUG: {'sh ip int br | i Loopback0': ''}
+2021-11-19 18:54:28,592 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:54:31,406 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:54:31,406 root DEBUG: {'sh version | i uptime': 'R1 uptime is 8 weeks, 1 day, 11 hours, 23 minutes'}
+2021-11-19 18:54:32,407 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:54:35,225 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:54:35,225 root DEBUG: {'sh version | i uptime': 'R2 uptime is 8 weeks, 1 day, 11 hours, 23 minutes'}
+2021-11-19 18:54:36,226 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:54:39,053 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:54:39,054 root DEBUG: {'sh version | i uptime': 'R3 uptime is 8 weeks, 1 day, 11 hours, 23 minutes'}
+2021-11-19 18:54:40,054 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:54:42,863 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:54:42,864 root DEBUG: {'sh version | i uptime': 'R1 uptime is 8 weeks, 1 day, 11 hours, 23 minutes'}
+2021-11-19 18:54:43,864 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:54:46,856 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:54:46,857 root DEBUG: {'sh run | i hostname': 'hostname R2'}
+2021-11-19 18:54:47,857 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:54:50,659 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:54:50,660 root DEBUG: {'sh clock': '*18:54:50.548 UTC Fri Nov 19 2021'}
+2021-11-19 18:54:51,660 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:54:54,539 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:54:54,539 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  1.1.1.1         YES manual up                    up'}
+2021-11-19 18:54:55,540 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:54:58,503 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:54:58,503 root DEBUG: {'sh run | i hostname': 'hostname R2'}
+2021-11-19 18:54:59,504 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:55:02,401 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:55:02,401 root DEBUG: {'sh run | i hostname': 'hostname R3'}
+2021-11-19 18:55:03,401 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:55:06,033 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:55:06,033 root DEBUG: {'sh clock': '*18:55:05.921 UTC Fri Nov 19 2021'}
+2021-11-19 18:55:07,034 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:55:09,876 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:55:09,876 root DEBUG: {'sh version | i uptime': 'R2 uptime is 8 weeks, 1 day, 11 hours, 24 minutes'}
+2021-11-19 18:55:10,876 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:55:13,705 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:55:13,705 root DEBUG: {'sh version | i uptime': 'R3 uptime is 8 weeks, 1 day, 11 hours, 24 minutes'}
+2021-11-19 18:55:14,706 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:55:17,797 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:55:17,798 root DEBUG: {'sh run | i hostname': 'hostname R1'}
+2021-11-19 18:55:18,799 root INFO: >>> Connecting to 192.168.100.2
+2021-11-19 18:55:21,681 root INFO: <<< Received output from 192.168.100.2
+2021-11-19 18:55:21,681 root DEBUG: {'sh ip int br | i Loopback0': 'Loopback0                  10.2.2.2        YES NVRAM  up                    up'}
+2021-11-19 18:55:22,681 root INFO: >>> Connecting to 192.168.100.3
+2021-11-19 18:55:25,523 root INFO: <<< Received output from 192.168.100.3
+2021-11-19 18:55:25,523 root DEBUG: {'sh ip int br | i Loopback0': ''}
+2021-11-19 18:55:26,524 root INFO: >>> Connecting to 192.168.100.1
+2021-11-19 18:55:29,641 root INFO: <<< Received output from 192.168.100.1
+2021-11-19 18:55:29,641 root DEBUG: {'sh run | i hostname': 'hostname R1'}
+2021-11-19 18:55:30,643 root INFO: >>> Connecting to 192.168.100.2
