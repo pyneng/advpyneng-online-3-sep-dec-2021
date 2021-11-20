@@ -18,7 +18,7 @@ def read_by_neighbor(filename: str) -> Iterator[str]:
         yield neighbor
 
 
-def read_by_neighbor(filename: str) -> Iterator[str]:
+def read_by_neighbor_2(filename: str) -> Iterator[str]:
     with open(filename) as f:
         all_n = f.read()
 
