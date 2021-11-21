@@ -16,6 +16,7 @@ devices = [
 key = operator.itemgetter("vendor")
 
 sorted_devices = sorted(devices, key=key)
+pprint(sorted_devices)
 data = it.groupby(sorted_devices, key)
 
 for vendor, devs in data:
