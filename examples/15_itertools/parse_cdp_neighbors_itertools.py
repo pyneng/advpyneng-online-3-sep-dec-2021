@@ -33,6 +33,6 @@ def parse_cdp(neighbor):
 if __name__ == "__main__":
     data = read_by_neighbor("sh_cdp_neighbors_detail.txt")
     for n in data:
-        print(n)
+        # print(n)
         print("#"*30)
         pprint(parse_cdp(n), width=120)
