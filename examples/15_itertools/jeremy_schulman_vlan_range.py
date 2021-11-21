@@ -13,4 +13,5 @@ def vlan_range_str(vlans):
 
 
 if __name__ == "__main__":
-    print(vlan_range_str([1, 2, 3, 4, 10, 11, 12, 100]))
+    vlans = [1, 2, 3, 4, 10, 11, 12, 100]
+    print(vlan_range_str(sorted(vlans)))

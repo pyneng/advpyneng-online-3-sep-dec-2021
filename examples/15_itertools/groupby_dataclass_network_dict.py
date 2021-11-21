@@ -14,6 +14,7 @@ devices = [
 ]
 
 key = operator.itemgetter("vendor")
+# key = lambda x: x.get("vendor")
 
 sorted_devices = sorted(devices, key=key)
 pprint(sorted_devices)
