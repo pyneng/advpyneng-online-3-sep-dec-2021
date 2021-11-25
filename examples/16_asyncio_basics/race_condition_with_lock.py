@@ -1,14 +1,16 @@
 import random
 import time
 from concurrent.futures import ThreadPoolExecutor
+import threading
 
 
 def plus_1():
     global counter
 
-    value = counter
-    time.sleep(random.choice([0, 0.5, 0.8, 1]))
-    counter = value + 1
+    with lock:
+        value = counter
+        time.sleep(random.choice([0, 0.5]))
+        counter = value + 1
 
 
 def main():
@@ -22,6 +24,7 @@ def main():
 
 
 if __name__ == "__main__":
-    for _ in range(10):
+    lock = threading.Lock()
+    for _ in range(5):
         counter = 0
         main()
