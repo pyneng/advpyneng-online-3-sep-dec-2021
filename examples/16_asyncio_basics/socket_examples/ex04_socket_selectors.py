@@ -12,10 +12,11 @@ def accept(server_socket):
 def read(client_socket):
     data = client_socket.recv(4096)
     print(f'{data=}')
-    client_socket.send(data.upper())
     if b"close" in data:
         selector.unregister(client_socket)
         client_socket.close()
+    else:
+        client_socket.send(data.upper())
 
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
