@@ -1,27 +1,30 @@
 import asyncio
+import yaml
+from pprint import pprint
 from scrapli import AsyncScrapli
+from scrapli.exceptions import ScrapliException
 from devices_scrapli import devices
 
-
-r1 = {
-    "host": "192.168.100.1",
-    "auth_username": "cisco",
-    "auth_password": "cisco",
-    "auth_secondary": "cisco",
-    "auth_strict_key": False,
-    "transport": "asyncssh",
-    "platform": "cisco_iosxe",
-}
-
-
 async def send_show(device, command):
-    async with AsyncScrapli(**device) as conn:
-        result = await conn.send_command(command)
-    return result.result
+    try:
+        async with AsyncScrapli(**device) as conn:
+            reply = await conn.send_command(command)
+            parsed = reply.textfsm_parse_output()
+        return parsed
+    except ScrapliException as error:
+        print(error)
+
+
+
+async def run_all(devices, command):
+    coro = [send_show(dev, command) for dev in devices]
+    result = await asyncio.gather(*coro, return_exceptions=True)
+    return  result
 
 
 if __name__ == "__main__":
-    # r1 = devices[0]
-    output = asyncio.run(send_show(r1, "show ip int br"))
-    print(output)
+    with open("devices_scrapli_telnet.yaml") as f:
+        devices = yaml.safe_load(f)
+    output = asyncio.run(run_all(devices, "show ip int br"))
+    pprint(output)
 
