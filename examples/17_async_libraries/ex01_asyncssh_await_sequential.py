@@ -7,11 +7,8 @@ import yaml
 
 async def connect_ssh(device, command):
     print(f"Подключаюсь к {device['host']}")
-    ssh_coroutine = asyncssh.connect(**device)
-    ssh = await asyncio.wait_for(ssh_coroutine, timeout=10)
-    writer, reader, stderr = await ssh.open_session(
-        term_type="Dumb", term_size=(24, 80)
-    )
+    ssh = await asyncssh.connect(**device)
+    writer, reader, stderr = await ssh.open_session(term_type="xterm")
     await reader.readuntil(">")
     writer.write("enable\n")
     await reader.readuntil("Password")
