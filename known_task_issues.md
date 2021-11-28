@@ -6,7 +6,7 @@
 * [Ошибка в тесте test_task_4_2b.py](https://github.com/pyneng/advpyneng-online-3-sep-dec-2021/blob/main/known_task_issues.md#%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-%D0%B2-%D1%82%D0%B5%D1%81%D1%82%D0%B5-test_task_4_2bpy)
 * [Неправильный номер задания в описании заданий 4.2b, 4.2c](https://github.com/pyneng/advpyneng-online-3-sep-dec-2021/blob/main/known_task_issues.md#%D0%BD%D0%B5%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BD%D0%BE%D0%BC%D0%B5%D1%80-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B2-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B9-42b-42c)
 * [Ошибка в тесте 10.2](https://github.com/pyneng/advpyneng-online-3-sep-dec-2021/blob/main/known_task_issues.md#%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-%D0%B2-%D1%82%D0%B5%D1%81%D1%82%D0%B5-102)
-
+* [В задании 12.2 не надо создавать свой класс Sequence, надо использовать класс из collections.abc](https://github.com/pyneng/advpyneng-online-3-sep-dec-2021/blob/main/known_task_issues.md#%D0%B2-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B8-122-%D0%BD%D0%B5-%D0%BD%D0%B0%D0%B4%D0%BE-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%B2%D0%B0%D1%82%D1%8C-%D1%81%D0%B2%D0%BE%D0%B9-%D0%BA%D0%BB%D0%B0%D1%81%D1%81-sequence-%D0%BD%D0%B0%D0%B4%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81-%D0%B8%D0%B7-collectionsabc)
 
 ## Перехватываются не все исключения в функции задания 1.3
 
