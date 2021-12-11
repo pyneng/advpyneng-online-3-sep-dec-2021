@@ -1,5 +1,6 @@
 import asyncio
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 
 def netmiko_connect(device):
@@ -15,7 +16,7 @@ async def scrapli_connect(device):
 
 
 async def main():
-    devices = list(range(10))
+    devices = list(range(20))
     coroutines = []
     for dev in devices:
         if dev % 2:
@@ -23,11 +24,14 @@ async def main():
         else:
             coro = scrapli_connect(dev)
         coroutines.append(coro)
-    await asyncio.sleep(5)
-    print("coroutines")
     results = await asyncio.gather(*coroutines)
     return results
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    executor = ThreadPoolExecutor(max_workers=10)
+    loop = asyncio.new_event_loop()
+    loop.set_default_executor(executor)
+    output = loop.run_until_complete(main())
+    print(output)
+    loop.close()
